@@ -10,7 +10,7 @@ const google = require('google-it');
 
 console.log("BOT ONLINE");
 
-var prefix = "$";
+var prefix = "!";
 
 
 
@@ -65,7 +65,7 @@ var mentionned = message.mentions.members.first();
 
 
 client.on('message' , message => {
-if(message.content === '$voice') {
+if(message.content === '!voice') {
     message.channel.send(`**عدد الاشخاص الموجودين بـ  الرومات الصوتيه : ${message.guild.members.filter(g => g.voiceChannel).size}**`);
 }
 });
@@ -78,7 +78,7 @@ if(message.content === '$voice') {
  
   client.on('message', message => {
         var  user = message.mentions.users.first() || message.author;
-    if (message.content.startsWith("$avatar")) {
+    if (message.content.startsWith("!avatar")) {
 message.channel.send(`This avatar For ${user} link : ${user.avatarURL}`);
 }
 });
@@ -389,7 +389,7 @@ message.channel.send(id)
 
 
    client.on('message', message => {
-     if (message.content === "$sup") {
+     if (message.content === "!sup") {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
@@ -406,7 +406,6 @@ message.channel.send(id)
 
 
             client.on('message', message => {
-		     	var prefix ="$";
                 if(message.content === prefix + "inv") {
                     let embed = new Discord.RichEmbed ()
                     embed.setTitle("**:arrow_right: Invite Cozmo Bot!**")
@@ -439,16 +438,16 @@ ${prefix}color - لأختيار لونك في السيرفر :heart:
 ${prefix}invite - معلومات عن الدعوة :soccer:
          
         Admin's Commands.  
-$ban - أمر الباند :no_entry:
-$kick - أمر الكيك  :outbox_tray:
-$ccolors-   صنع ألوان 
-$bc -   البرودكاست  لكل الأعضاء
-$role - لأعطاء رتبة لـ أحد الأعضاء  
-$rerole - لآزالة الرتبة من أحد الاعضاء 
-$setvoice -   لعمل روم الفويس أونلاين  
+!ban - أمر الباند :no_entry:
+!kick - أمر الكيك  :outbox_tray:
+!ccolors-   صنع ألوان 
+!bc -   البرودكاست  لكل الأعضاء
+!role - لأعطاء رتبة لـ أحد الأعضاء  
+!rerole - لآزالة الرتبة من أحد الاعضاء 
+!setvoice -   لعمل روم الفويس أونلاين  
             bot info       
-$inv - لدعوة البوت :pen_fountain: 
-$sup - الدعم الفني :nut_and_bolt:**`)
+!inv - لدعوة البوت :pen_fountain: 
+!sup - الدعم الفني :nut_and_bolt:**`)
     message.author.send(embed)
 }
 });
@@ -522,7 +521,7 @@ if(ra3d.content.startsWith(prefix + 'ccolors')) {
        
        
        client.on('message', message => {
-    if (message.content === "$channels") {
+    if (message.content === "!channels") {
         if (message.author.bot) return
                       if (!message.guild) return;
 
@@ -551,7 +550,7 @@ if(ra3d.content.startsWith(prefix + 'ccolors')) {
 
 client.on('message', message => {
           let args = message.content.split(' ').slice(1);
-   if(message.content.split(' ')[0] == '$color'){
+   if(message.content.split(' ')[0] == '!color'){
            const embedd = new Discord.RichEmbed()
      .setFooter('Requested by '+message.author.username, message.author.avatarURL)
    .setDescription(`**There's No Color With This Number ** :x: `)
@@ -662,94 +661,10 @@ client.on("message", message => {
 
 
 
-client.on('message', message => {
-              if(!message.channel.guild) return;
-    if(message.content.startsWith('$bc')) {
-    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-    let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-    let copy = "Cozmo bot";
-    let request = `Requested By ${message.author.username}`;
-    if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
-    msg.react('✅')
-    .then(() => msg.react('❌'))
-    .then(() =>msg.react('✅'))
-    
-    let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-	      let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-    let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
-    reaction1.on("collect", r => {
-    message.channel.send(`☑ | Done ... The Broadcast Message Has Been Sent For ${message.guild.members.size} Members`).then(m => m.delete(5000));
-    message.guild.members.forEach(m => {
-    var bc = new
-       Discord.RichEmbed()
-       .setColor('RANDOM')
-       .setTitle('Broadcast')
-       .addField('Server', message.guild.name)
-       .addField('Sender', message.author.username)
-       .addField('Message', args)
-       .setThumbnail(message.author.avatarURL)
-       .setFooter(copy, client.user.avatarURL);
-    m.send({ embed: bc })
-    msg.delete();
-    })
-    })
-    reaction2.on("collect", r => {
-    message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
-    msg.delete();
-    })
-    })
-    }
-    });
     
     
     
-    
-    
-    
-    
-     client.on('guildCreate', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("RED")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=474733285440749570&permissions=8&scope=bot')
-  .setDescription(`**
-  New Server Add Cozmo Bot ✅
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("474983791362834444").sendEmbed(embed)
-});
-client.on('guildDelete', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("GOLD")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=474733285440749570&permissions=8&scope=bot')
-  .setDescription(`**
-  Server Kicked Cozmo Bot :cry:
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("474983791362834444").sendEmbed(embed)
-});
- 
- 
- 
- 
- 
- 
-  client.on('message', message => {
-            if(!message.channel.guild) return;
-let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('>bcall')){
- if (message.author.id !== '463857132060540958') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
- if(!message.author.id === '463857132060540958') return;
-message.channel.sendMessage('جار ارسال الرسالة |✅')
-client.users.forEach(m =>{
-m.sendMessage(args)
-})
-}
-});
-  
+
 
 
 
@@ -766,7 +681,7 @@ m.sendMessage(args)
 
 
   client.on('message', message => {
-    if (message.content.startsWith("$tr")) {
+    if (message.content.startsWith("!tr")) {
 
         const translate = require('google-translate-api');
         const Discord = require('discord.js');
@@ -865,7 +780,7 @@ client.on('message', message => {
            if (hours == 0) {
                hours = 12;
            }
-               if(message.content.startsWith('$time')) {
+               if(message.content.startsWith('!time')) {
                    const embed = new Discord.RichEmbed()
           .addField(`🕐 Time `,` ** 「  ${hours} : ${minutes} : ${suffix} 」**`)
 .addField(` :satellite: Date `,`**「 ${years} : ${month} : ${day} 」**`)

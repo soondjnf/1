@@ -815,4 +815,57 @@ message.channel.send(embed)
 });   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let rebel;
+client.on("ready", async  => {
+    let guild = client.guilds.get("471828127258116126");
+  let users = guild.members.map(member => member.user.id);
+  let i;
+  rebel=0;
+for (i=0 ; i < users.length ; i++) {
+ let   check = guild.members.get(users[i]);
+if(!check.voiceChannelID){
+        continue;
+}else{
+  rebel++;
+}
+}
+guild.channels.find('id', '476030044628713473').setName(" VOICE ONLINE「"+rebel+"」");
+  client.setInterval(() =>{
+    let d = Date.now()
+  }, 5000);
+});
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+    let guild = client.guilds.get("471828127258116126");
+let newUserChannel = newMember.voiceChannel
+let oldUserChannel = oldMember.voiceChannel
+ if(oldUserChannel === undefined && newUserChannel !== undefined) {
+   rebel++;
+guild.channels.find('id', '476030044628713473').setName(" VOICE ONLINE「"+rebel+"」");
+} else if(newUserChannel === undefined){
+  rebel--;
+guild.channels.find('id', '476030044628713473').setName(" VOICE ONLINE「"+rebel+"」");
+}
+});
+client.on('message', Codes => {
+  
+  if(Codes.content === "-صوت") {
+      Codes.channel.send(" VOICE ONLINE「"+rebel+"」");
+}
+});
+
 client.login(process.env.BOT_TOKEN);

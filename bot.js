@@ -39,6 +39,34 @@ if (message.content.startsWith( 'مسح')) {
 
 
 
+
+
+
+  client.on("message", message => {
+ 
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith( "clear")) {
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
+        var msg;
+        msg = parseInt();
+      
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "Done | تــم",
+        color: 0x06DF00,
+        description: "تم مسح الرسائل بنجاح",
+        footer: {
+          text: "Cozmo Bot" // غير هنا حط اسم البوت
+        }
+      }}).then(msg => {msg.delete(3000)});
+                          }
+
+     
+});
+  
+
+
+
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
 
@@ -133,7 +161,7 @@ var mentionned = message.mentions.members.first();
 .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true)
 .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)
 .addField(': عدد الدعوات', inviteCount,false)
-.setFooter("S Bot.")
+.setFooter("Cozmo bot.")
     message.channel.sendEmbed(id);
 })
 }

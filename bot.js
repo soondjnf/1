@@ -13,6 +13,48 @@ console.log("BOT ONLINE");
 var prefix = "!";
 
 const adminprefix = "!";
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 100,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setDescription(" ✅    تم ارسال الرابط على الخاص  ")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+                .setAuthor(message.guild.name, message.guild.iconURL)
+        .setDescription(`
+**
+
+-${message.guild.name}  Link
+**`)
+      message.author.sendEmbed(Embed11)
+    }
+});
+
+
+
+
+
+
+
+
 const devs = ['391727913415999498','463857132060540958'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');

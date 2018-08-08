@@ -8,7 +8,16 @@ const googl = require('goo.gl');
 const translate = require('google-translate-api');   
 const google = require('google-it'); 
 
-console.log("BOT ONLINE");
+client.on('ready', () => {
+   console.log(`----------------`);
+      console.log(`Desert Bot- Scrpit By ┃ SOON`);
+        console.log(`----------------`);
+      console.log(`ON ${client.guilds.size} Servers '     Bot By KOON' `);
+    console.log(`----------------`);
+  console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame(`SERVER FRONT http://twitch.tv/pg_ksa`)
+client.user.setStatus("online")
+});
 
 var prefix = "!";
 

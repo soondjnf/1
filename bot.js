@@ -963,11 +963,7 @@ client.on("guildMemberAdd", member => {
                                 ctx.fillText(member.user.username, 300, 120);
                               
                               //NAMEً
-                              ctx.font = '25px Arial';
-                              ctx.fontSize = '28px';
-                              ctx.fillStyle = "#FFFFFF";
-      ctx.fillText(`Welcome To ${member.guild.name}`, 300, 60);
-      
+              
                //AVATARً
                               let Avatar = Canvas.Image;
                               let ava = new Avatar;

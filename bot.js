@@ -41,7 +41,6 @@ message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bul
 message.channel.sendMessage("", {embed: {
 title: "تــم مسح الشات",
 color: 0x06DF00,
-footer: "..."
 }
 })
 }

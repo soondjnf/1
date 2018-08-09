@@ -15,7 +15,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Bot By KOON' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(SERVER FRONT, "https://www.twitch.tv/idk")
+client.user.setGame(`SERVER FRONT`)
 client.user.setStatus("online")
 });
 
